@@ -54,5 +54,5 @@ function handleBrightcovePlayers(numTries) {
     }
   }
 }
-console.log("**Start**")
+console.log("**Start1**")
 handleBrightcovePlayers(1);
