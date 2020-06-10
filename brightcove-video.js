@@ -36,7 +36,7 @@ function handlePlaybackEvent_(event) {
   };
 console.log("Player Start")
   var customEvent = new CustomEvent(state, eventInit);
-  window.frameElement.dispatchEvent(customEvent);
+  player.dispatchEvent(customEvent);
 }
 
 /**
