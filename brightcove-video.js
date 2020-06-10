@@ -78,5 +78,5 @@ function handleBrightcovePlayers(numTries) {
     }
   }
 }
-console.log("**Start window.parent pm hc**")
+console.log("**Start window.parent pm-hc**")
 handleBrightcovePlayers(1);
