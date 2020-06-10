@@ -38,7 +38,7 @@ console.log("Player Start")
   var customEvent = new CustomEvent(state, eventInit);
   console.log(eventDetail)
   //window.parent.dispatchEvent(customEvent);
-  window.parent.postMessage(customEvent,"*");
+  window.parent.postMessage("play","*");
 }
 
 /**
@@ -78,5 +78,5 @@ function handleBrightcovePlayers(numTries) {
     }
   }
 }
-console.log("**Start window.parent pm**")
+console.log("**Start window.parent pm hc**")
 handleBrightcovePlayers(1);
