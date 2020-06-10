@@ -36,6 +36,7 @@ function handlePlaybackEvent_(event) {
   };
 console.log("Player Start")
   var customEvent = new CustomEvent(state, eventInit);
+  window.aa = eventDetail;
   player.dispatchEvent(customEvent);
 }
 
@@ -76,5 +77,5 @@ function handleBrightcovePlayers(numTries) {
     }
   }
 }
-console.log("**Start 2**")
+console.log("**Start 3**")
 handleBrightcovePlayers(1);
