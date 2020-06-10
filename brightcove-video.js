@@ -1,3 +1,26 @@
+/**
+ * @fileoverview Detects video playback events in the Brightcove player and
+ * sends a CustomEvent for each of them.
+ *
+ * Although the player is loaded in an IFRAME, Brightcover overwrites
+ * `postMessage` with their own function, so you can't post messages between
+ * the parent and frame windows.
+ *
+ * But the script is run in the context of the parent window. So CustomEvents
+ * can be dispatched and they can be received in the main window.
+ *
+ *@doc Brightcove Player development overview https://player.support.brightcove.com/coding-topics/overview-player-api.html
+ * @doc Brightcove Player API https://docs.brightcove.com/brightcove-player/current-release/Player.html
+ * @doc HTML5 media events https://html.spec.whatwg.org/#mediaevents
+ */
+
+/**
+ * @private
+ * Given a playback event, get other metadata related to the event,
+ * then send the event's details to the parent.
+ * @param {Event} event The playback event.
+ * @this The Brightcove player object.
+ */
 function handlePlaybackEvent_(event) {
   var state = event.type;
   var player = this;
@@ -11,16 +34,16 @@ function handlePlaybackEvent_(event) {
   var eventInit = {
     detail: eventDetail,
   };
-
-  console.log('Player is available');
+console.log("Player Start")
   var customEvent = new CustomEvent(state, eventInit);
-  console.log(customEvent);
-  window.aa = customEvent;
-  console.log("file 2");
-  player.dispatchEvent(customEvent);
-
+  window.frameElement.dispatchEvent(customEvent);
 }
 
+/**
+ * @public
+ * Send CustomEvents to the parent for specific media playback events.
+ * @param {int} numTries Counter of tries to check that players are valid.
+ */
 function handleBrightcovePlayers(numTries) {
   var players = videojs.getPlayers();
   var playerIds = Object.keys(players);
@@ -35,8 +58,9 @@ function handleBrightcovePlayers(numTries) {
       }, numTries * 500);
     }
   } else {
+    var playerId = playerIds[0];
     try {
-      videojs.getPlayer('J5eBQvT9f').ready(function() {
+      videojs.getPlayer(playerId).ready(function() {
         var player = this;
         var playerEvents = [
           'ended',
@@ -44,8 +68,6 @@ function handleBrightcovePlayers(numTries) {
           'play',
         ];
         playerEvents.forEach(function(playerEvent) {
-			console.log(playerEvent);
-		  console.log("playerEvent");
           player.on(playerEvent, handlePlaybackEvent_);
         });
       });
@@ -54,5 +76,5 @@ function handleBrightcovePlayers(numTries) {
     }
   }
 }
-console.log("**Start1 **")
+console.log("**Start 2**")
 handleBrightcovePlayers(1);
