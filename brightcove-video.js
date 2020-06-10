@@ -77,5 +77,5 @@ function handleBrightcovePlayers(numTries) {
     }
   }
 }
-console.log("**Start 3**")
+console.log("**Start3 **")
 handleBrightcovePlayers(1);
