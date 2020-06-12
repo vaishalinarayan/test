@@ -70,7 +70,9 @@ function handleBrightcovePlayers(numTries) {
 		  'timeupdate',
         ];
         playerEvents.forEach(function(playerEvent) {
+		var player = this;
 		console.log("here 1");
+		
 		var fcurrentTime = player.currentTime();
 		var fduration = player.duration();
 		var fpercentViewed = Math.floor((fcurrentTime/fduration)*100);
@@ -114,5 +116,5 @@ function handleBrightcovePlayers(numTries) {
     }
   }
 }
-console.log("**Start window.parent pm- tu console**")
+console.log("**Start window.parent pm- tu playthis**")
 handleBrightcovePlayers(1);
