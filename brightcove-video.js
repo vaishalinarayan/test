@@ -114,5 +114,5 @@ function handleBrightcovePlayers(numTries) {
     }
   }
 }
-console.log("**Start window.parent pm- timeupdate**")
+console.log("**Start window.parent pm- tu console**")
 handleBrightcovePlayers(1);
