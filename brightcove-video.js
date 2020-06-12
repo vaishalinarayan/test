@@ -70,45 +70,7 @@ function handleBrightcovePlayers(numTries) {
 		  'timeupdate',
         ];
         playerEvents.forEach(function(playerEvent) {
-		var player = this;
-		console.log("here 1");
-		
-		var fcurrentTime = player.currentTime();
-		var fduration = player.duration();
-		var fpercentViewed = Math.floor((fcurrentTime/fduration)*100);
-		console.log(fduration);
-		var ev = player._isEventViewed;
-		if (playerEvent =='play' && !player._isEventViewed.play)
-		{
           player.on(playerEvent, handlePlaybackEvent_);
-		  player._isEventViewed.play=true;
-		}
-		if (playerEvent =='pause' && !player._isEventViewed.pause)
-		{
-          player.on(playerEvent, handlePlaybackEvent_);
-		  player._isEventViewed.pause=true;
-		}
-		if (playerEvent =='timeupdate')
-		{
-			if (!ev['25'] && fpercentViewed >= 25)
-			{
-			  player.on(playerEvent, handlePlaybackEvent_);
-			  ev['25']=true;
-				console.log("***25****");
-			}
-			else if (!ev['50'] && fpercentViewed >= 50)
-			{
-			  player.on(playerEvent, handlePlaybackEvent_);
-			  ev['50']=true;
-				console.log("***50****");
-			}
-			else if (!ev['75'] && fpercentViewed >= 75)
-			{
-			  player.on(playerEvent, handlePlaybackEvent_);
-			  ev['75']=true;
-				console.log("***75****");
-			}
-		}
         });
       });
     } catch (e) {
@@ -116,5 +78,5 @@ function handleBrightcovePlayers(numTries) {
     }
   }
 }
-console.log("**Start window.parent pm- tu play this**")
+console.log("**Start window.parent pm- tu added**")
 handleBrightcovePlayers(1);
