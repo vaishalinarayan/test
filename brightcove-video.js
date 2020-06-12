@@ -1,3 +1,26 @@
+/**
+ * @fileoverview Detects video playback events in the Brightcove player and
+ * sends a CustomEvent for each of them.
+ *
+ * Although the player is loaded in an IFRAME, Brightcover overwrites
+ * `postMessage` with their own function, so you can't post messages between
+ * the parent and frame windows.
+ *
+ * But the script is run in the context of the parent window. So CustomEvents
+ * can be dispatched and they can be received in the main window.
+ *
+ *@doc Brightcove Player development overview https://player.support.brightcove.com/coding-topics/overview-player-api.html
+ * @doc Brightcove Player API https://docs.brightcove.com/brightcove-player/current-release/Player.html
+ * @doc HTML5 media events https://html.spec.whatwg.org/#mediaevents
+ */
+
+/**
+ * @private
+ * Given a playback event, get other metadata related to the event,
+ * then send the event's details to the parent.
+ * @param {Event} event The playback event.
+ * @this The Brightcove player object.
+ */
 function handlePlaybackEvent_(event) {
   var state = event.type;
   var player = this;
@@ -17,13 +40,13 @@ function handlePlaybackEvent_(event) {
 	var fcurrentTime = player.currentTime();
 	var fduration = player.duration();
 	var fpercentViewed = Math.floor((fcurrentTime/fduration)*100);
-	var ev = this._isEventViewed;	
-	console.log(ev);
-	if (!this._isEventViewed.play && state=="play")
+		
+	
+	if (tempFlag!="play"&&state=="play")
 		{
-		  this._isEventViewed.play=true;
+		  var tempFlag="play";
 		  window.parent.postMessage(eventDetail,"*");
-		  console.log("***play***")
+		  console.log("***play***");
 		}	
   
 
@@ -67,5 +90,5 @@ function handleBrightcovePlayers(numTries) {
   }
 }
 
-console.log("***Start window.parent pm-tu_Play 2**");
+console.log("***Start window.parent pm-tu_Play once**");
 handleBrightcovePlayers(1);
