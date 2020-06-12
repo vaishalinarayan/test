@@ -70,9 +70,11 @@ function handleBrightcovePlayers(numTries) {
 		  'timeupdate',
         ];
         playerEvents.forEach(function(playerEvent) {
+		console.log("here 1");
 		var fcurrentTime = player.currentTime();
 		var fduration = player.duration();
 		var fpercentViewed = Math.floor((fcurrentTime/fduration)*100);
+		console.log(fduration);
 		var ev = player._isEventViewed;
 		if (playerEvent =='play' && !player._isEventViewed.play)
 		{
