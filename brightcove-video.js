@@ -34,10 +34,20 @@ function handlePlaybackEvent_(event) {
   var eventInit = {
     detail: eventDetail,
   };
-console.log("Player Start")
-
-		
-		
+  
+  
+	console.log("Player Start")
+	var fcurrentTime = player.currentTime();
+	var fduration = player.duration();
+	var fpercentViewed = Math.floor((fcurrentTime/fduration)*100);
+	var ev = player._isEventViewed;	
+	
+	if (!player._isEventViewed.play && state=="play")
+		{
+		  player._isEventViewed.play=true;
+		  window.parent.postMessage(eventDetail,"*");
+		  console.log("***play***")
+		}	
   
 
 }
@@ -80,5 +90,5 @@ function handleBrightcovePlayers(numTries) {
   }
 }
 
-console.log("***Start window.parent pm-tu_Try**");
+console.log("***Start window.parent pm-tu_Play**");
 handleBrightcovePlayers(1);
