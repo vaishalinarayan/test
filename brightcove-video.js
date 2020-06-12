@@ -42,11 +42,13 @@ function handlePlaybackEvent_(event) {
 	var fpercentViewed = Math.floor((fcurrentTime/fduration)*100);
 		
 	
-	if (tempFlag!="play"&&state=="play")
+	if (state=="timeupdate" && fpercentViewed==25)
+		
 		{
-		  var tempFlag="play";
 		  window.parent.postMessage(eventDetail,"*");
-		  console.log("***play***");
+		  console.log("***25***");
+		  console.log(fcurrentTime)
+		  console.log(fpercentViewed)
 		}	
   
 
@@ -90,5 +92,5 @@ function handleBrightcovePlayers(numTries) {
   }
 }
 
-console.log("***Start window.parent pm-tu_Play once**");
+console.log("***Start window.parent pm-tu_25 **");
 handleBrightcovePlayers(1);
