@@ -40,17 +40,34 @@ function handlePlaybackEvent_(event) {
 	var fcurrentTime = player.currentTime();
 	var fduration = player.duration();
 	var fpercentViewed = Math.floor((fcurrentTime/fduration)*100);
-		
 	
-	if (state=="timeupdate" && fpercentViewed==25)
+	
+	if (state=="timeupdate" && Math.floor(fpercentViewed / 25)*25==25&& getCookie("pstate")!="25")
 		
 		{
+		document.cookie = "pstate=25"
 		  window.parent.postMessage(eventDetail,"*");
 		  console.log("***25***");
 		  console.log(fcurrentTime)
 		  console.log(fpercentViewed)
 		}	
-  
+	
+	
+	function getCookie(cname) {
+	  var name = cname + "=";
+	  var decodedCookie = decodeURIComponent(document.cookie);
+	  var ca = decodedCookie.split(';');
+	  for(var i = 0; i <ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+		  c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+		  return c.substring(name.length, c.length);
+		}
+	  }
+	  return "";
+	}
 
 }
 
@@ -91,6 +108,6 @@ function handleBrightcovePlayers(numTries) {
     }
   }
 }
-
-console.log("***Start window.parent pm-tu_25 **");
+document.cookie = "pstate="
+console.log("***Start window.parent pm-tu_25 cookie **");
 handleBrightcovePlayers(1);
