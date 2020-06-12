@@ -52,6 +52,34 @@ function handlePlaybackEvent_(event) {
 		  console.log(fpercentViewed)
 		}	
 	
+	if (state=="timeupdate" && Math.floor(fpercentViewed / 25)*25==50&& getCookie("pstate")!="50")
+		
+		{
+		document.cookie = "pstate=50"
+		  window.parent.postMessage(eventDetail,"*");
+		  console.log("***50***");
+		  console.log(fcurrentTime)
+		  console.log(fpercentViewed)
+		}
+	if (state=="timeupdate" && Math.floor(fpercentViewed / 25)*25==75&& getCookie("pstate")!="75")
+		
+		{
+		document.cookie = "pstate=75"
+		  window.parent.postMessage(eventDetail,"*");
+		  console.log("***75***");
+		  console.log(fcurrentTime)
+		  console.log(fpercentViewed)
+		}
+	
+	if (state=="ended" && getCookie("pstate")!="ended")
+		
+		{
+		document.cookie = "pstate=ended"
+		  window.parent.postMessage(eventDetail,"*");
+		  console.log("***ended***");
+		  console.log(fcurrentTime)
+		  console.log(fpercentViewed)
+		}
 	
 	function getCookie(cname) {
 	  var name = cname + "=";
@@ -95,7 +123,7 @@ function handleBrightcovePlayers(numTries) {
       videojs.getPlayer(playerId).ready(function() {
         var player = this;
         var playerEvents = [
-          'pause',
+          'ended',
           'play',
 		  'timeupdate',
         ];
@@ -109,5 +137,5 @@ function handleBrightcovePlayers(numTries) {
   }
 }
 document.cookie = "pstate="
-console.log("***Start window.parent pm-tu_25 cookie **");
+console.log("***Start window.parent pm-tu_all **");
 handleBrightcovePlayers(1);
