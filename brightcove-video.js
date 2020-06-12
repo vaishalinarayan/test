@@ -90,5 +90,5 @@ function handleBrightcovePlayers(numTries) {
   }
 }
 
-console.log("***Start window.parent pm-tu_Play2**");
+console.log("***Start window.parent pm-tu_Play 2**");
 handleBrightcovePlayers(1);
