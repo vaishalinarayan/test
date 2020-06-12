@@ -48,7 +48,6 @@ function handlePlaybackEvent_(event) {
 		  window.parent.postMessage(eventDetail,"*");
 		  console.log("***play***")
 		}	
-  
 
 }
 
