@@ -78,5 +78,6 @@ function handleBrightcovePlayers(numTries) {
     }
   }
 }
-console.log("**Start window.parent pm- tu added**")
+
+console.log("***Start window.parent pm- tu added**")
 handleBrightcovePlayers(1);
