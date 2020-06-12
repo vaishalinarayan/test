@@ -47,13 +47,13 @@ console.log("Player Start")
 		{
 		  player._isEventViewed.play=true;
 		  window.parent.postMessage(eventDetail,"*");
-		  console.log("***play***)
+		  console.log("***play***")
 		}
 		if (!player._isEventViewed.pause&& state=="pause")
 		{
           player._isEventViewed.pause=true;
 		  window.parent.postMessage(eventDetail,"*");
-		  console.log("***pause***)
+		  console.log("***pause***")
 		}
 		if (state =='timeupdate')
 		{
@@ -122,5 +122,5 @@ function handleBrightcovePlayers(numTries) {
   }
 }
 
-console.log("***Start window.parent pm- tu_1**")
+console.log("***Start window.parent pm-tu_1**");
 handleBrightcovePlayers(1);
