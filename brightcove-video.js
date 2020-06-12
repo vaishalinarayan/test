@@ -66,11 +66,42 @@ function handleBrightcovePlayers(numTries) {
         var player = this;
         var playerEvents = [
           'ended',
-          'pause',
           'play',
+		  'timeupdate',
         ];
         playerEvents.forEach(function(playerEvent) {
+		var fcurrentTime = player.currentTime();
+		var fduration = player.duration();
+		var fpercentViewed = Math.floor((fcurrentTime/fduration)*100);
+		var ev = player._isEventViewed;
+		if (playerEvent =='play' && !player._isEventViewed.play)
+		{
           player.on(playerEvent, handlePlaybackEvent_);
+		  player._isEventViewed.play=true;
+		}
+		if (playerEvent =='ended' && !player._isEventViewed.ended)
+		{
+          player.on(playerEvent, handlePlaybackEvent_);
+		  player._isEventViewed.ended=true;
+		}
+		if (playerEvent =='timeupdate')
+		{
+			if (!ev['25'] && fpercentViewed >= 25)
+			{
+			  player.on(playerEvent, handlePlaybackEvent_);
+			  ev['25']=true;
+			}
+			else if (!ev['50'] && fpercentViewed >= 50)
+			{
+			  player.on(playerEvent, handlePlaybackEvent_);
+			  ev['50']=true;
+			}
+			else if (!ev['75'] && fpercentViewed >= 75)
+			{
+			  player.on(playerEvent, handlePlaybackEvent_);
+			  ev['75']=true;
+			}
+		}
         });
       });
     } catch (e) {
