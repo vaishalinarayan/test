@@ -35,10 +35,53 @@ function handlePlaybackEvent_(event) {
     detail: eventDetail,
   };
 console.log("Player Start")
-  var customEvent = new CustomEvent(state, eventInit);
+
+		var fcurrentTime = player.currentTime();
+		var fduration = player.duration();
+		var fpercentViewed = Math.floor((fcurrentTime/fduration)*100);
+		
+		console.log(fduration);
+		
+		var ev = player._isEventViewed;
+		if (!player._isEventViewed.play && state=="play")
+		{
+		  player._isEventViewed.play=true;
+		  window.parent.postMessage(eventDetail,"*");
+		  console.log("***play***)
+		}
+		if (!player._isEventViewed.pause&& state=="pause")
+		{
+          player._isEventViewed.pause=true;
+		  window.parent.postMessage(eventDetail,"*");
+		  console.log("***pause***)
+		}
+		if (state =='timeupdate')
+		{
+			if (!ev['25'] && fpercentViewed >= 25)
+			{
+				window.parent.postMessage(eventDetail,"*");
+				ev['25']=true;
+				console.log("***25****");
+			}
+			else if (!ev['50'] && fpercentViewed >= 50)
+			{
+			  window.parent.postMessage(eventDetail,"*");
+			  ev['50']=true;
+				console.log("***50****");
+			}
+			else if (!ev['75'] && fpercentViewed >= 75)
+			{
+			  window.parent.postMessage(eventDetail,"*");
+			  ev['75']=true;
+				console.log("***75****");
+			}
+		}
+		
+		
+  
   //console.log(eventDetail)
   //window.parent.dispatchEvent(customEvent);
-  window.parent.postMessage(eventDetail,"*");
+  
 }
 
 /**
@@ -79,5 +122,5 @@ function handleBrightcovePlayers(numTries) {
   }
 }
 
-console.log("***Start window.parent pm- tu added**")
+console.log("***Start window.parent pm- tu_1**")
 handleBrightcovePlayers(1);
