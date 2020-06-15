@@ -36,7 +36,7 @@ function handlePlaybackEvent_(event) {
   };
   
   
-	console.log("Player Start")
+	
 	var fcurrentTime = player.currentTime();
 	var fduration = player.duration();
 	var fpercentViewed = Math.floor((fcurrentTime/fduration)*100);
