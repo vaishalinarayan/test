@@ -42,6 +42,17 @@ function handlePlaybackEvent_(event) {
 	var fpercentViewed = Math.floor((fcurrentTime/fduration)*100);
 	
 	
+	if (state=="timeupdate" && Math.floor(fpercentViewed / 25)*25==0&& getCookie("pstate")!="0")
+		
+		{
+		document.cookie = "pstate=0"
+		  window.parent.postMessage(eventDetail,"*");
+		  console.log("***0	***");
+		  console.log(eventDetail)
+		  console.log(fcurrentTime)
+		  console.log(fpercentViewed)
+		}	
+	
 	if (state=="timeupdate" && Math.floor(fpercentViewed / 25)*25==25&& getCookie("pstate")!="25")
 		
 		{
@@ -128,7 +139,6 @@ function handleBrightcovePlayers(numTries) {
         var player = this;
         var playerEvents = [
           'ended',
-          'play',
 		  'timeupdate',
         ];
         playerEvents.forEach(function(playerEvent) {
