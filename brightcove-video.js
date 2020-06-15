@@ -46,7 +46,7 @@ function handlePlaybackEvent_(event) {
 		
 		{
 		document.cookie = "pstate=0"
-		  window.parent.postMessage(eventDetail,"*");
+		  window.parent.postMessage(fcurrentTime,"*");
 		  console.log("***0	***");
 		  console.log(eventDetail)
 		  console.log(fcurrentTime)
