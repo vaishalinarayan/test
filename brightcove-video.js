@@ -48,7 +48,6 @@ function handlePlaybackEvent_(event) {
 		{
 		document.cookie = "pstate=0"
 		  window.parent.postMessage(eventDetail,"*");
-		  console.log("***0	***");
 		}	
 	
 	if (state=="timeupdate" && Math.floor(fpercentViewed / 25)*25==25&& getCookie("pstate")!="25")
@@ -56,7 +55,6 @@ function handlePlaybackEvent_(event) {
 		{
 		document.cookie = "pstate=25"
 		  window.parent.postMessage(eventDetail,"*");
-		  console.log("***25***");
 		  
 		}	
 	
@@ -64,16 +62,13 @@ function handlePlaybackEvent_(event) {
 		
 		{
 		document.cookie = "pstate=50"
-		  window.parent.postMessage(eventDetail,"*");
-		  console.log("***50***");
-		  
+		  window.parent.postMessage(eventDetail,"*");		  
 		}
 	if (state=="timeupdate" && Math.floor(fpercentViewed / 25)*25==75&& getCookie("pstate")!="75")
 		
 		{
 		document.cookie = "pstate=75"
 		  window.parent.postMessage(eventDetail,"*");
-		  console.log(eventDetail)
 		  
 		}
 	
@@ -81,9 +76,7 @@ function handlePlaybackEvent_(event) {
 		
 		{
 		document.cookie = "pstate=ended"
-		  window.parent.postMessage(eventDetail,"*");
-		  console.log("***ended***");
-		  
+		  window.parent.postMessage(eventDetail,"*");		  
 		}
 	
 	function getCookie(cname) {
@@ -141,5 +134,4 @@ function handleBrightcovePlayers(numTries) {
   }
 }
 document.cookie = "pstate="
-console.log("***Start pm-tu_start4**");
 handleBrightcovePlayers(1);
