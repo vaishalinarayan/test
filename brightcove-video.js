@@ -30,6 +30,7 @@ function handlePlaybackEvent_(event) {
     duration: player.duration(),
     name: player.mediainfo.name,
     state: state,
+	id: player.mediainfo.name,
   };
   var eventInit = {
     detail: eventDetail,
