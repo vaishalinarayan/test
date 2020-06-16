@@ -141,5 +141,5 @@ function handleBrightcovePlayers(numTries) {
   }
 }
 document.cookie = "pstate="
-console.log("***Start pm-tu_start3**");
+console.log("***Start pm-tu_start4**");
 handleBrightcovePlayers(1);
