@@ -46,11 +46,8 @@ function handlePlaybackEvent_(event) {
 		
 		{
 		document.cookie = "pstate=0"
-		  window.parent.postMessage(fcurrentTime,"*");
+		  window.parent.postMessage(eventDetail,"*");
 		  console.log("***0	***");
-		  console.log(eventDetail)
-		  console.log(fcurrentTime)
-		  console.log(fpercentViewed)
 		}	
 	
 	if (state=="timeupdate" && Math.floor(fpercentViewed / 25)*25==25&& getCookie("pstate")!="25")
@@ -59,9 +56,7 @@ function handlePlaybackEvent_(event) {
 		document.cookie = "pstate=25"
 		  window.parent.postMessage(eventDetail,"*");
 		  console.log("***25***");
-		  console.log(eventDetail)
-		  console.log(fcurrentTime)
-		  console.log(fpercentViewed)
+		  
 		}	
 	
 	if (state=="timeupdate" && Math.floor(fpercentViewed / 25)*25==50&& getCookie("pstate")!="50")
@@ -70,9 +65,7 @@ function handlePlaybackEvent_(event) {
 		document.cookie = "pstate=50"
 		  window.parent.postMessage(eventDetail,"*");
 		  console.log("***50***");
-		  console.log(eventDetail)
-		  console.log(fcurrentTime)
-		  console.log(fpercentViewed)
+		  
 		}
 	if (state=="timeupdate" && Math.floor(fpercentViewed / 25)*25==75&& getCookie("pstate")!="75")
 		
@@ -80,9 +73,7 @@ function handlePlaybackEvent_(event) {
 		document.cookie = "pstate=75"
 		  window.parent.postMessage(eventDetail,"*");
 		  console.log(eventDetail)
-		  console.log("***75***");
-		  console.log(fcurrentTime)
-		  console.log(fpercentViewed)
+		  
 		}
 	
 	if (state=="ended" && getCookie("pstate")!="ended")
@@ -90,10 +81,8 @@ function handlePlaybackEvent_(event) {
 		{
 		document.cookie = "pstate=ended"
 		  window.parent.postMessage(eventDetail,"*");
-		  console.log(eventDetail)
 		  console.log("***ended***");
-		  console.log(fcurrentTime)
-		  console.log(fpercentViewed)
+		  
 		}
 	
 	function getCookie(cname) {
@@ -151,5 +140,5 @@ function handleBrightcovePlayers(numTries) {
   }
 }
 document.cookie = "pstate="
-console.log("***Start pm-tu_start2**");
+console.log("***Start pm-tu_start3**");
 handleBrightcovePlayers(1);
