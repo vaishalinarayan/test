@@ -133,7 +133,7 @@ function handleBrightcovePlayers(numTries) {
     }
   }
 }
-
+console.log("brightcove test");
 console.log("***Test****")
 document.cookie = "pstate="
 handleBrightcovePlayers(1);
