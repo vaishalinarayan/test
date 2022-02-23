@@ -21,7 +21,7 @@
  * @param {Event} event The playback event.
  * @this The Brightcove player object.
  */
-
+console.log("test executed");
 function handlePlaybackEvent_(event)
 {
 	var state = event.type;
@@ -133,7 +133,7 @@ function handleBrightcovePlayers(numTries) {
     		}
   	}
 }
-console.log("test executed");
+
 document.cookie = "pstate="
 handleBrightcovePlayers(1);
 
